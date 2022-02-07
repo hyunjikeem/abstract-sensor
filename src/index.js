@@ -9,20 +9,20 @@ class Sensor {
         if (this.powerStatus === 'off' && status === 'on') {
             this.powerStatus = 'on';
             this.status = 'idle';
-            
-            setTimeout (() => {
-            this.status = 'sensingDistance';
-        }, this.reportingInterval);
-        setTimeout (() => {
-            this.status = 'reportingData';
-        }, this.reportingInterval + 500);
-        setTimeout (() => {
-            this.status = 'idle';
-        }, this.reportingInterval + 1000);
+
+            setTimeout(() => {
+                this.status = 'sensingDistance';
+            }, this.reportingInterval);
+            setTimeout(() => {
+                this.status = 'reportingData';
+            }, this.reportingInterval + 500);
+            setTimeout(() => {
+                this.status = 'idle';
+            }, this.reportingInterval + 1000);
         } else if (status === 'off') {
             this.powerStatus = 'off';
         } else {
-            throw new Error ('server not changed');
+            throw new Error('server not changed');
         }
     }
 }
@@ -41,11 +41,11 @@ class IotServer {
             if (this.sensor[i].id === devideId) {
                 if (this.sensor[i].powerStatus === 'on' && actionId === 'CHANGE_REPORTING_INTERVAL') {
                     this.sensor[i].reportingInterval = payload;
-                };
-            };
-        };
-    };
-};
+                }
+            }
+        }
+    }
+}
 
 module.exports = {
     Sensor,
